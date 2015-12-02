@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${mapperPkg}.${className}Mapper" > 
+	<!-- Result Map-->
+	<resultMap id="resultMap" type="${modelPkg}.$!{className}" >
+	#foreach($item in $!{columnDatas})
+		#if($item.autoIncrement)
+			<id column="$!item.columnName" property="$item.propertyName"/>
+		#else
+			<result column="$!item.columnName" property="$item.propertyName"/>
+		#end
+	#end
+	</resultMap>
+	       
+	<!-- $!{tableName} table all fields -->
+	<sql id="columnList" >
+		 $!{SQL.columnFields}
+	</sql>
+	   
+	<!-- 查询条件 -->
+	<sql id="whereConditions">
+		where 1=1
+		<trim suffixOverrides="and" >
+		#foreach($item in $!{columnDatas})
+			#set($testStr = $!item.propertyName + " != null")
+			#if($!item.dataType == 'java.lang.String')
+				#set($testStr = $!testStr + " and " + $!item.propertyName + " != ''")
+		 	#end
+			<if test="$!testStr" >
+			    and $!item.columnName =  #{$!item.propertyName}
+			</if>
+		#end
+		</trim>
+	</sql>
+
+	<sql id="updatesql">
+		<trim prefix="set" suffixOverrides="," >
+			#foreach($item in $!{columnDatas})
+			#set($testStr = $!item.propertyName + " != null")
+			#if($!item.dataType == 'java.lang.String')
+			#set($testStr = $!testStr + " and " + $!item.propertyName + " != ''")
+			#end
+			<if test="$!testStr" >
+				$!item.columnName =  #{$!item.propertyName},
+			</if>
+			#end
+		</trim>
+	</sql>
+	
+	<!-- 插入记录 -->
+	<insert id="insert" parameterType="${modelPkg}.${className}" useGeneratedKeys="true">
+		$!{SQL.insert}
+	</insert>
+	
+	<!-- 根据id，修改记录-->  
+	<update id="update" parameterType="${modelPkg}.${className}" >
+		update ${tableName}
+		<include refid="updatesql"/>
+		where id = #{id}
+	</update>
+	 
+	<!-- 删除-->
+	<update id="delete" parameterType="${modelPkg}.${className}">
+		$!{SQL.delete}
+	</update>
+	 
+	<!-- 根据ID查询 -->
+	<select id="selectById" resultMap="resultMap" parameterType="int">
+		$!{SQL.selectById}
+	</select>
+	  	
+	<!-- 总数-->
+	<select id="selectCountByConditions" resultType="java.lang.Integer"  parameterType="${modelPkg}.${className}">
+		select count(1) from ${tableName} 
+		<include refid="whereConditions"/>
+	</select>
+	  	
+	<!-- 条件查询 -->
+	<select id="selectByConditions" resultMap="resultMap"  parameterType="${modelPkg}.${className}">
+		select 
+		<include refid="columnList"/>
+		from ${tableName} 
+		<include refid="whereConditions"/>
+	</select>
+	
+	
+	<!-- map入参查询总数-->
+	<select id="selectCountByMap" resultType="java.lang.Integer"  parameterType="java.util.Map">
+		select count(1) from ${tableName} 
+		<include refid="whereConditions"/>
+	</select>
+	  	
+	<!-- map入参查询 -->
+	<select id="selectByMap" resultMap="resultMap"  parameterType="java.util.Map">
+		select 
+		<include refid="columnList"/>
+		from ${tableName} 
+		<include refid="whereConditions"/>
+	</select>
+	  	
+	<!-- 条件查询 -->
+	<select id="selectQueryInfo" resultMap="resultMap"  parameterType="com.ucredit.uudream.web.common.QueryInfo">
+		select  <include refid="columnList"/> 
+		from ${tableName}   
+		where ${where} ${dir} ${limit}
+	</select>
+	
+	<!-- 条件查询总数 -->
+	<select id="selectQueryInfoSize" resultType="java.lang.Integer"  parameterType="com.ucredit.uudream.web.common.QueryInfo">
+		select count(*) from ${tableName} where ${where}
+	</select>
+  	
+</mapper>   
