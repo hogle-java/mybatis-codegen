@@ -25,7 +25,8 @@ import org.apache.velocity.VelocityContext
  *
  */
 public class Main {
-
+    private static ResourceBundle res = ResourceBundle
+            .getBundle("DataSourceConfig");
     static void main(args) {
 
         EventQueue.invokeLater(new Runnable() {
@@ -50,7 +51,7 @@ public class Main {
                 boxLayout(axis:BoxLayout.X_AXIS)
                 label(text:"数据库地址：")
                 addressField = textField(columns:15)
-                addressField.text = "jdbc:mysql://10.255.33.103:3306/uu-dream"
+                addressField.text = res.getString("gpt.url")
             }
         }
 
@@ -59,7 +60,7 @@ public class Main {
                 boxLayout(axis:BoxLayout.X_AXIS)
                 label(text:"用户名：")
                 userNameField = textField(columns:15)
-                userNameField.text = "test"
+                userNameField.text = res.getString("gpt.username")
             }
         }
 
@@ -68,7 +69,7 @@ public class Main {
                 boxLayout(axis:BoxLayout.X_AXIS)
                 label(text:"密码：")
                 pwdField = passwordField(columns:15)
-                pwdField.text = "test123"
+                pwdField.text = res.getString("gpt.password")
             }
         }
 
@@ -86,7 +87,7 @@ public class Main {
                 boxLayout(axis:BoxLayout.X_AXIS)
                 label(text:"包含表(英文逗号分隔)：")
                 includeTablesField = textField(columns:15)
-                includeTablesField.text="rrzx_application,rrzx_application_log"
+                includeTablesField.text=""
             }
         }
         def path = {
@@ -103,7 +104,7 @@ public class Main {
                 boxLayout(axis:BoxLayout.X_AXIS)
                 label(text:"包名：")
                 pkgField = textField(columns:15)
-                pkgField.text = "com.ucredit.uudream"
+                pkgField.text = "com.enlinkmob.ucenter"
             }
         }
         def removePrefix = {
