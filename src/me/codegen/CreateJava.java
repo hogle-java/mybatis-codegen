@@ -39,7 +39,7 @@ public class CreateJava {
             //根路径
             String srcPath = rootPath + "src\\";
             //包路径
-            String pckPath = rootPath + "src\\com\\ucredit\\";
+            String pckPath = rootPath + "src\\com\\\\";
             //页面路径，放到WEB-INF下面是为了不让手动输入路径访问jsp页面，起到安全作用
             String webPath = rootPath + "WebRoot\\WEB-INF\\jsp\\";
 
@@ -67,10 +67,10 @@ public class CreateJava {
             context.put("lowerName", lowerName);
             context.put("codeName", codeName);
             context.put("tableName", tableName);
-            context.put("mapperPkg", "com.ucredit.dao.sales");
-            context.put("modelPkg", "com.ucredit.model.sales");
-            context.put("servicePkg", "com.ucredit.service.sales");
-            context.put("controllerPkg", "com.ucredit.api.web");
+            context.put("mapperPkg", "com.dao.sales");
+            context.put("modelPkg", "com.model.sales");
+            context.put("servicePkg", "com.service.sales");
+            context.put("controllerPkg", "com.api.web");
             context.put("author", "bobby");
             context.put("date", sdf.format(new Date()));
 
