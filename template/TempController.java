@@ -1,7 +1,7 @@
 /**
  * All Rights Reserved
  */
-package com.ucredit.uudream.web ;
+package com.uudream.web ;
 //${controllerPkg}
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,7 @@ import java.util.Collection;
 
 import ${modelPkg}.${className};
 
-import  com.ucredit.uudream.web.common.AbstractController;
+import  com.uudream.web.common.AbstractController;
 
 /**
  * @author ${author}
