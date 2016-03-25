@@ -101,14 +101,14 @@
 	</select>
 	  	
 	<!-- 条件查询 -->
-	<select id="selectQueryInfo" resultMap="resultMap"  parameterType="com.ucredit.uudream.web.common.QueryInfo">
+	<select id="selectQueryInfo" resultMap="resultMap"  parameterType="com.uudream.web.common.QueryInfo">
 		select  <include refid="columnList"/> 
 		from ${tableName}   
 		where ${where} ${dir} ${limit}
 	</select>
 	
 	<!-- 条件查询总数 -->
-	<select id="selectQueryInfoSize" resultType="java.lang.Integer"  parameterType="com.ucredit.uudream.web.common.QueryInfo">
+	<select id="selectQueryInfoSize" resultType="java.lang.Integer"  parameterType="com.uudream.web.common.QueryInfo">
 		select count(*) from ${tableName} where ${where}
 	</select>
   	
