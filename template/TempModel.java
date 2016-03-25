@@ -1,5 +1,5 @@
 /**
- * Copyright(c) 2011-2015 by UCredit Inc.
+ * 
  * All Rights Reserved
  */
 package ${modelPkg};
