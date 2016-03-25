@@ -1,12 +1,11 @@
 /**
- * Copyright(c) 2011-2015 by UCredit Inc.
  * All Rights Reserved
  */
 package ${servicePkg};
 import java.util.Map;
 import java.util.Collection;
 import java.util.List;
-import com.ucredit.uudream.web.common.QueryInfo;
+import com.uudream.web.common.QueryInfo;
 import ${modelPkg}.${className};
 /**
  * @author ${author}
