@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import ${mapperPkg}.${className}Mapper;
 import ${servicePkg}.${className}Service;
-import com.ucredit.uudream.web.common.QueryInfo;
+import com.uudream.web.common.QueryInfo;
 import java.util.Map;
 import java.util.Collection;
 import java.util.List;
