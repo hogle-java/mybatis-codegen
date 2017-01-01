@@ -95,7 +95,7 @@ public class Main {
                 boxLayout(axis:BoxLayout.X_AXIS)
                 label(text:"生成代码路径：")
                 pathField = textField(columns:15)
-                pathField.text = "c:/codegen"
+                pathField.text = "/Users/wenyu.zhao/java_workspaces"
             }
         }
 
@@ -104,7 +104,7 @@ public class Main {
                 boxLayout(axis:BoxLayout.X_AXIS)
                 label(text:"包名：")
                 pkgField = textField(columns:15)
-                pkgField.text = "com.enlinkmob.ucenter"
+                pkgField.text = "com.mllh.pay.ma"
             }
         }
         def removePrefix = {
@@ -171,21 +171,21 @@ public class Main {
                 String lowerName = StringUtils.uncapitalize(className)
 
                 //项目跟路径路径，此处修改为你的项目路径
-                String rootPath = StringUtils.isBlank(path) ? "c:/codegen" : path;
+                String rootPath = StringUtils.isBlank(path) ? "/Users/wenyu.zhao/java_workspaces" : path;
 
                 //根路径
-                srcPath = rootPath + "\\src\\";
+                srcPath = rootPath + "/src/";
                 //包路径
                 String pkgPath = pkg.replace(".", "/");
-                String pckPath = srcPath + pkgPath + (pkgPath.endsWith("\\") || pkgPath.endsWith("/") ? "" : "\\");
+                String pckPath = srcPath + pkgPath + (pkgPath.endsWith("/") || pkgPath.endsWith("/") ? "" : "/");
 
                 //java,xml文件名称
-                String modelPath = "model\\" + className + ".java";
-                String mapperPath = "dao\\" + className + "Mapper.java";
-                String servicePath = "service\\" + className + "Service.java";
-                String serviceImplPath = "service\\impl\\" + className + "ServiceImpl.java";
-                String controllerPath = "api\\web\\" + className + "Controller.java";
-                String sqlMapperPath = "conf\\mybatis\\" + className + "Mapper.xml";
+                String modelPath = "model/" + className + ".java";
+                String mapperPath = "dao/" + className + "Mapper.java";
+                String servicePath = "service/" + className + "Service.java";
+                String serviceImplPath = "service/impl/" + className + "ServiceImpl.java";
+                String controllerPath = "api/web/" + className + "Controller.java";
+                String sqlMapperPath = "conf/mybatis/" + className + "Mapper.xml";
 
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日aHH:mm:ss");
                 VelocityContext context = new VelocityContext();

@@ -34,32 +34,32 @@ public class CreateJava {
                 + className.substring(1, className.length());
 
             //项目跟路径路径，此处修改为你的项目路径
-            String rootPath = "c:/codegen";
+            String rootPath = "/Users/wenyu.zhao/java_workspaces";
 
             //根路径
-            String srcPath = rootPath + "src\\";
+            String srcPath = rootPath + "src/";
             //包路径
-            String pckPath = rootPath + "src\\com\\\\";
+            String pckPath = rootPath + "src/com/";
             //页面路径，放到WEB-INF下面是为了不让手动输入路径访问jsp页面，起到安全作用
-            String webPath = rootPath + "WebRoot\\WEB-INF\\jsp\\";
+            String webPath = rootPath + "WebRoot/WEB-INF/jsp/";
 
             File file = new File(pckPath);
             //java,xml文件名称
-            String modelPath = "model\\sales\\" + className + ".java";
-            String beanPath = "bean\\" + className + ".java";
-            String mapperPath = "dao\\sales\\" + className + "Mapper.java";
-            String servicePath = "service\\sales\\" + className
+            String modelPath = "model/sales/" + className + ".java";
+            String beanPath = "bean/" + className + ".java";
+            String mapperPath = "dao/sales/" + className + "Mapper.java";
+            String servicePath = "service/sales/" + className
                 + "Service.java";
-            String serviceImplPath = "service\\sales\\impl\\" + className
+            String serviceImplPath = "service/sales/impl/" + className
                 + "ServiceImpl.java";
-            String controllerPath = "api\\web\\" + className
+            String controllerPath = "api/web/" + className
                 + "Controller.java";
-            String sqlMapperPath = "conf\\mybatis\\" + className + "Mapper.xml";
-            String springPath = "conf\\spring\\";
-            String sqlMapPath = "conf\\mybatis\\";
+            String sqlMapperPath = "conf/mybatis/" + className + "Mapper.xml";
+            String springPath = "conf/spring/";
+            String sqlMapPath = "conf/mybatis/";
             //jsp页面路径
-            String pageEditPath = lowerName + "\\" + lowerName + "Edit.jsp";
-            String pageListPath = lowerName + "\\" + lowerName + "List.jsp";
+            String pageEditPath = lowerName + "/" + lowerName + "Edit.jsp";
+            String pageListPath = lowerName + "/" + lowerName + "List.jsp";
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日aHH:mm:ss");
             VelocityContext context = new VelocityContext();

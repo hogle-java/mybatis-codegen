@@ -52,7 +52,7 @@ public class CommonPageParser {
         try {
             //获取文件模板根路径
             String templateBasePath = CommonPageParser.getRootPath()
-                    + "\\template";
+                    + "/template";
             Properties properties = new Properties();
             properties.setProperty(RuntimeConstants.RESOURCE_LOADER, "file");
             properties.setProperty("file.resource.loader.description",
